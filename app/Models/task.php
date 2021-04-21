@@ -5,7 +5,30 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class task extends Model
+class Task extends Model
 {
-    protected $fillable = ['id_user', 'name', 'id_statu','created_at','updated_at'];
+    use HasFactory;
+
+//    mostramos los nombres de las columnas que queremos que sean rellenados
+
+    protected $fillable = [
+        'name',
+        'description',
+        'user_id',
+        'status_id',
+    ];
+
+    public function User()
+    {
+//        Trae los datos de la tabla de usuarios por eso es belongsto
+
+        return $this->belongsTo(User::class);
+    }
+
+    public function Status()
+    {
+//        Trae los datos de la tabla de Status por eso es belongsto
+
+        return $this->belongsTo(Status::class);
+    }
 }

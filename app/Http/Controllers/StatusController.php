@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class TaskController extends Controller
+class StatusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        return Status::all();
     }
 
     /**
@@ -34,22 +34,7 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //Validation
-
-        $this->validate($request, [
-            'name' => 'bail|required|max:50',
-            'description' => 'required|max:200',
-            'status_id' => 'required|max:200',
-        ]);
-
-        $task = Task::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'user_id' => Auth::user()->id,
-            'status_id' => $request->status_id,
-        ]);
-
-        return redirect('dashboard');
+        //
     }
 
     /**
@@ -60,8 +45,7 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        return view('task.show')->with('task', $task);
-
+        //
     }
 
     /**
@@ -84,12 +68,7 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $task->update([
-            'name' => $request->name,
-            'description' => $request->description,
-            'status_id' => $request->status_id,
-        ]);
-        return view('task.show')->with('task', $task);
+        //
     }
 
     /**
@@ -100,7 +79,6 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        $task->delete();
-        return redirect(route('dashboard'));
+        //
     }
 }

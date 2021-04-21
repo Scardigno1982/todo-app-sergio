@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TaskController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard' ,[TaskController::class, "index"] , function () {
-    return view('dashboard' );
+Route::get('/dashboard', function () {
+    return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+//Traigo los controladores task y states todo los metodos get post etc
 
-//Route::post("/dashboard" , [TaskController::class, "create"]);
-Route::post("/dashboard" , [TaskController::class, "store"]);
-
+Route::resources([
+    'tasks' => TaskController::class,
+    'states' => StatusController::class,
+]);
 
 require __DIR__.'/auth.php';
