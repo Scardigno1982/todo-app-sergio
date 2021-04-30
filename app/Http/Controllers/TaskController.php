@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\Status;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+
+
 
 class TaskController extends Controller
 {
@@ -17,9 +21,9 @@ class TaskController extends Controller
 
     public function index()
     {
-        $estados = DB::table('tasks')->get();
+        $estados = Task::all();
 
-        $statuses = DB::table('statuses')->get();
+        $statuses = Status::all();
 
 //        $cats = Http::get('https://api.thecatapi.com/v1/images/search');
 //
