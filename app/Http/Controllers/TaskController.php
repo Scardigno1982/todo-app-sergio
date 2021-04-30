@@ -61,7 +61,7 @@ class TaskController extends Controller
 
         $task->save();
 
-        return redirect('/dashboard')->with('success', 'Student has been added');
+        return redirect('/dashboard')->with('success', 'Task has been added');
 
 
     }
