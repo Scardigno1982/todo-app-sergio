@@ -2,86 +2,85 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class TaskController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+
+
+
+
     public function index()
     {
-        //
+        $estados = DB::table('tasks')->get();
+
+        $statuses = DB::table('statuses')->get();
+
+//        $cats = Http::get('https://api.thecatapi.com/v1/images/search');
+//
+//        $cat = $cats->json();
+
+//dd($cat);
+
+
+        return view('/dashboard')->with('estados', $estados)->with('statuses', $statuses);
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        return view('/perrito');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
+
         //Validation
+
 
         $this->validate($request, [
             'name' => 'bail|required|max:50',
             'description' => 'required|max:200',
             'status_id' => 'required|max:200',
+
         ]);
 
-        $task = Task::create([
+        $task = new Task ([
             'name' => $request->name,
             'description' => $request->description,
             'user_id' => Auth::user()->id,
             'status_id' => $request->status_id,
         ]);
 
-        return redirect('dashboard');
+        $task->save();
+
+        return redirect('/dashboard')->with('success', 'Student has been added');
+
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
+
         return view('task.show')->with('task', $task);
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         $task->update([
@@ -92,12 +91,7 @@ class TaskController extends Controller
         return view('task.show')->with('task', $task);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         $task->delete();

@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\PortalController;
+use App\Http\Controllers\StatusController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,19 +16,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-//Traigo los controladores task y states todo los metodos get post etc
+Route::get('/dashboard', [TaskController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 Route::resources([
     'tasks' => TaskController::class,
     'states' => StatusController::class,
 ]);
 
-require __DIR__.'/auth.php';
+//Route::post('/task',[TaskController::class, 'store'])->middleware(['auth'])->name('task');;
+//Route::get('tasks/{id}/destroy',[TaskController::class,'destroy'])->name('tasks.destroy');
+//Route::get('tasks/{id}/restore',[TaskController::class,'restore'])->name('tasks.restore');
+//Route::get('tasks/{id}/destroy/force',[TaskController::class,'force_destroy'])->name('tasks.destroy.force');
+
+require __DIR__ . '/auth.php';
