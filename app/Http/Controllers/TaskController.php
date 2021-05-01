@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use App\Models\Status;
+use App\Models\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,6 +26,8 @@ class TaskController extends Controller
 
         $statuses = Status::all();
 
+        $users = User::all();
+
 //        $cats = Http::get('https://api.thecatapi.com/v1/images/search');
 //
 //        $cat = $cats->json();
@@ -32,7 +35,7 @@ class TaskController extends Controller
 //dd($cat);
 
 
-        return view('/dashboard')->with('estados', $estados)->with('statuses', $statuses);
+        return view('/dashboard')->with('estados', $estados)->with('statuses', $statuses)->with('users', $users);
 
     }
 
@@ -81,18 +84,35 @@ class TaskController extends Controller
 
     public function edit($id)
     {
-        //
+        $task_id = Task::all()->first();
+
+        $statuses = Status::all()->first();
+
+        $estados = Status::all();
+
+//        $users = User::all->first();
+
+        $task = ($id);
+
+        return view ('/tasks.edit')->with('estados', $estados)->with('task', $task)->with('task_id', $task_id)->with('statuses', $statuses);
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Task $task)
     {
-        $task->update([
+        $this->validate($request,
+            [
+                'name' => 'bail|required|max:50',
+                'description' => 'required|max:200',
+                'status_id' => 'required|numeric|exists:statuses,id',
+            ]);
+
+            $task->update([
             'name' => $request->name,
             'description' => $request->description,
             'status_id' => $request->status_id,
         ]);
-        return view('task.show')->with('task', $task);
+        return view('tasks.edit')->with('task', $task);
     }
 
 

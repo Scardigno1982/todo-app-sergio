@@ -5,12 +5,14 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="bg-white  shadow-sm sm:rounded-lg">
-            <div class="p-6 bg-white border-b border-gray-200">
+
+
+
+        <div class="grid grid-cols-3">
+            <div class="my-5 mx-5 ">
                 <form action="{{ route('tasks.store') }}" method="POST">
                     @csrf
-                    <div class="shadow overflow-hidden sm:rounded-md">
+                    <div class="shadow ">
 
                         <label class="block text-sm font-medium text-gray-700">Creador de la
                             tarea: {{ Auth::user()->name }}</label>
@@ -46,12 +48,37 @@
                     </div>
                 </form>
             </div>
+
+            <div class="col-span-2 my-5 mx-5">
+                <table class="table-fixed shadow-2xl border-2 ">
+                    <thead>
+                    <tr class="border-2 bg-blue-800">
+                        <th class="w-1 p-3 text-white">ID</th>
+                        <th class="w-1/2 text-center p-3 text-white">Nombre Tarea</th>
+                        <th class="w-1/2 text-center p-3 text-white">Descripción</th>
+                        <th class="w-1/2 p-3 text-white">Estado</th>
+                        <th class="w-1/2 p-3 text-white">Acciones</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($estados as $estado)
+                    <tr class="border-2 bg-blue-100">
+
+                                                <td class="p-3 text-gray-600">{{ $estado->id  }}</td>
+                        <td class="text-center p-3 text-gray-600">{{ $estado->name }}</td>
+                        <td class="text-center p-3 text-gray-600">{{ $estado->description }}</td>
+                        <td class="p-3 text-gray-600">{{ $status->name }}</td>
+                        <td class="p-3 text-gray-600"><a href="{{ url('/tasks/'.$estado->id).'/edit' }}"
+                                                         class="btn btn-secondary" role="button">Editar</a></td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+
         </div>
-    </div>
-    <div>
 
-
-    </div>
 
 
 
