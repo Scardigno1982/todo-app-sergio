@@ -27,7 +27,7 @@ class TaskController extends Controller
 
         $statuses = Status::all();
 
-        $users = User::all();
+//        $users = User::all();
 
 //        $cats = Http::get('https://api.thecatapi.com/v1/images/search');
 //
@@ -36,7 +36,7 @@ class TaskController extends Controller
 //dd($cat);
 
 
-        return view('/dashboard')->with('estados', $estados)->with('statuses', $statuses)->with('users', $users);
+        return view('/dashboard')->with('estados', $estados)->with('statuses', $statuses);
 
     }
 
@@ -83,22 +83,23 @@ class TaskController extends Controller
 
         $users = User::all();
 
-        return view('/dashboard')->with('estados', $estados)->with('statuses', $statuses)->with('users', $users);
+        return view('/dashboard')->with('statuses', $statuses)->with('users', $users)->with('estados', $estados);
 
     }
 
 
     public function edit($id)
     {
+        $status = Status::all();
         $task_id = Task::find($id);
 
-        return view ('/tasks.edit')->with('task_id', $task_id);
+        return view ('/tasks.edit')->with('task_id', $task_id)->with('status', $status);
     }
 
 
     public function update(Request $request, $id)
     {
-        $statuses = Status::all();
+        $statuses = Status::select(['name']);
         $task_id = Task::find($id);
 
         $task_id->update([
@@ -108,7 +109,7 @@ class TaskController extends Controller
         ]);
 
         $estados = Task::all();
-        return view('/dashboard')->with('estados', $estados)->with('task_id', $task_id)->with('statuses', $statuses);
+        return view('/dashboard')->with('task_id', $task_id)->with('estados', $estados)->with('statuses', $statuses);
 
 
 

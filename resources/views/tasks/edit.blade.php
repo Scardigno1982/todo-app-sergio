@@ -10,7 +10,7 @@
 
         <form action="{{ route('tasks.update', $task_id->id ) }}" method="POST">
             @csrf
-            @method('put')
+            @method('patch')
             <div class="shadow ">
 
                 <label for="name" class="block text-sm font-medium text-gray-700">Nombre de la tarea</label>
@@ -29,10 +29,11 @@
                 <label for="country" class="block text-sm font-medium text-gray-700">Estado de la tarea</label>
 
 
-                <select id="status_id" name="status_id" autocomplete="country"
+                <select id="status_id" name="status_id"
                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                    <option>{{ $task_id->status_id }}</option>
-
+                    @foreach( $status as $statu)
+                    <option value="{{ $statu->id }}">{{ $statu->name }}</option>
+                    @endforeach
 
                 </select>
 

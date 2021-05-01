@@ -15,6 +15,9 @@
 
                     <label class="block text-sm font-medium text-gray-700">Creador de la
                         tarea: {{ Auth::user()->name }}</label>
+                    @foreach( $statuses as $statuse)
+                       <label>{{ $statuse->name }}</label>
+                    @endforeach
 
 
                     <label for="name" class="block text-sm font-medium text-gray-700">Nombre de la tarea</label>
@@ -74,8 +77,10 @@
                         <td class="p-3 text-indigo-50">
                             <form action="{{ route('tasks.destroy', $estado->id) }}" method="get">
                                 {{ csrf_field() }}
-                                <input type="hidden" name="_method" >
-                                <button class="bg-red-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">BORRAR</button>
+                                <input type="hidden" name="_method">
+                                <button class="bg-red-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                    BORRAR
+                                </button>
                             </form>
 
 
