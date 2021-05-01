@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ce905fe5-2077-4edf-aa12-75f223e26690" name="Default" comment="Terminado editar tarea">
-      <change afterPath="$PROJECT_DIR$/resources/views/tasks/show.blade.php" afterDir="false" />
+    <list default="true" id="ce905fe5-2077-4edf-aa12-75f223e26690" name="Default" comment="Terminado editar tarea ahora funcionando">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Status.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Status.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/task.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/task.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/tasks/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tasks/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/tasks/show.blade.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -328,7 +324,7 @@
       <workItem from="1619788938579" duration="5000" />
       <workItem from="1619816759000" duration="1099000" />
       <workItem from="1619818731374" duration="2918000" />
-      <workItem from="1619866173589" duration="18792000" />
+      <workItem from="1619866173589" duration="21565000" />
     </task>
     <task id="LOCAL-00001" summary="Usando eloquent">
       <created>1619819492911</created>
@@ -351,7 +347,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619875835633</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Terminado editar tarea ahora funcionando">
+      <created>1619886051816</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1619886051816</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -412,7 +415,8 @@
     <MESSAGE value="Usando eloquent" />
     <MESSAGE value="probando alt+enter :)" />
     <MESSAGE value="Terminado editar tarea" />
-    <option name="LAST_COMMIT_MESSAGE" value="Terminado editar tarea" />
+    <MESSAGE value="Terminado editar tarea ahora funcionando" />
+    <option name="LAST_COMMIT_MESSAGE" value="Terminado editar tarea ahora funcionando" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

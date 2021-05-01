@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Models\Status;
 use App\Models\User;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -101,13 +102,6 @@ class TaskController extends Controller
         $statuses = Status::all();
         $task_id = Task::find($id);
 
-//        $task_id->validate($request,
-//            [
-//                'name' => 'bail|required|max:50',
-//                'description' => 'required|max:200',
-//                'status_id' => 'required|numeric|exists:statuses,id',
-//            ]);
-
         $task_id->update([
             'name' => $request->name,
             'description' => $request->description,
@@ -124,7 +118,8 @@ class TaskController extends Controller
 
     public function destroy($id)
     {
-        $task->delete();
-        return redirect(route('dashboard'));
-    }
+
+        $task_id = Task::where('id',$id)->first();;
+        $task_id->delete();
+        return back()->with('info', 'Fue eliminado exitosamente');    }
 }
