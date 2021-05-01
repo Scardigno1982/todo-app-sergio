@@ -23,6 +23,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [TaskController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
+//Route::get('/edit/{id}', [TaskController::class,'edit']);
 
 Route::resources([
     'tasks' => TaskController::class,

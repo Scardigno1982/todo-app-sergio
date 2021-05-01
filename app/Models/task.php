@@ -30,6 +30,6 @@ class Task extends Model
     {
 //        Trae los datos de la tabla de Status por eso es belongsto
 
-        return $this->belongsTo(Status::class);
+        return $this->belongsTo(Status::class );
     }
 }

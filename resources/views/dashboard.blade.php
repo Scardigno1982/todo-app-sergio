@@ -68,7 +68,7 @@
                                                 <td class="p-3 text-gray-600">{{ $estado->id  }}</td>
                         <td class="text-center p-3 text-gray-600">{{ $estado->name }}</td>
                         <td class="text-center p-3 text-gray-600">{{ $estado->description }}</td>
-                        <td class="p-3 text-gray-600">{{ $status->name }}</td>
+                        <td class="p-3 text-gray-600">{{ $estado->status_id }}</td>
                         <td class="p-3 text-gray-600"><a href="{{ url('/tasks/'.$estado->id).'/edit' }}"
                                                          class="btn btn-secondary" role="button">Editar</a></td>
                     </tr>

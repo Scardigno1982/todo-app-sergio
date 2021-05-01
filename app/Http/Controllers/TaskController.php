@@ -76,43 +76,49 @@ class TaskController extends Controller
 
     public function show($id)
     {
+        $estados = Task::all();
 
-        return view('task.show')->with('task', $task);
+        $statuses = Status::all();
+
+        $users = User::all();
+
+        return view('/dashboard')->with('estados', $estados)->with('statuses', $statuses)->with('users', $users);
 
     }
 
 
     public function edit($id)
     {
-        $task_id = Task::all()->first();
+        $task_id = Task::find($id);
 
-        $statuses = Status::all()->first();
 
-        $estados = Status::all();
-
-//        $users = User::all->first();
-
-        $task = ($id);
-
-        return view ('/tasks.edit')->with('estados', $estados)->with('task', $task)->with('task_id', $task_id)->with('statuses', $statuses);
+        return view ('/tasks.edit')->with('task_id', $task_id);
     }
 
 
-    public function update(Request $request, Task $task)
+    public function update(Request $request, $id)
     {
-        $this->validate($request,
-            [
-                'name' => 'bail|required|max:50',
-                'description' => 'required|max:200',
-                'status_id' => 'required|numeric|exists:statuses,id',
-            ]);
+        $statuses = Status::all();
+        $task_id = Task::find($id);
 
-            $task->update([
+//        $task_id->validate($request,
+//            [
+//                'name' => 'bail|required|max:50',
+//                'description' => 'required|max:200',
+//                'status_id' => 'required|numeric|exists:statuses,id',
+//            ]);
+
+        $task_id->update([
             'name' => $request->name,
             'description' => $request->description,
             'status_id' => $request->status_id,
         ]);
-        return view('tasks.edit')->with('task', $task);
+
+        $estados = Task::all();
+        return view('/dashboard')->with('estados', $estados)->with('task_id', $task_id)->with('statuses', $statuses);
+
+
+
     }
 
 
