@@ -23,6 +23,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [TaskController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
+
 Route::get('tasks/{id}/destroy',[TaskController::class,'destroy'])->name('tasks.destroy');
 Route::get('tasks.store',[TaskController::class,'store'])->name('tasks.store');
 

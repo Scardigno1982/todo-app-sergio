@@ -9,6 +9,7 @@
     <div class="grid grid-cols-3">
         <div class="my-5 mx-5 ">
             <form action="{{ route('tasks.store') }}" method="POST">
+                @method('get')
                 @csrf
                 <div class="shadow ">
 
