@@ -23,12 +23,18 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [TaskController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
-//Route::get('/edit/{id}', [TaskController::class,'edit']);
+Route::get('tasks/{id}/destroy',[TaskController::class,'destroy'])->name('tasks.destroy');
+Route::get('tasks.store',[TaskController::class,'store'])->name('tasks.store');
 
-Route::resources([
-    'tasks' => TaskController::class,
-    'states' => StatusController::class,
-]);
+Route::get('tasks/{id}',[TaskController::class,'edit'])->name('tasks.edit');
+Route::patch('/tasks/{id}', [TaskController::class,'update'])->name('tasks.update');
+
+
+
+//Route::resources([
+//    'tasks' => TaskController::class,
+//    'states' => StatusController::class,
+//]);
 
 //Route::post('/task',[TaskController::class, 'store'])->middleware(['auth'])->name('task');;
 //Route::get('tasks/{id}/destroy',[TaskController::class,'destroy'])->name('tasks.destroy');

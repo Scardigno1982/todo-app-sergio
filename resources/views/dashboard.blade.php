@@ -68,12 +68,12 @@
                         <td class="text-center p-3 text-gray-600">{{ $estado->name }}</td>
                         <td class="text-center p-3 text-gray-600">{{ $estado->description }}</td>
                         <td class="p-3 text-gray-600">{{ $estado->status_id }}</td>
-                        <td class="p-3 text-gray-600"><a href="{{ url('/tasks/'.$estado->id).'/edit' }}"
+                        <td class="p-3 text-gray-600"><a href="{{ route('tasks.edit', $estado->id) }}"
                                                          class="btn btn-secondary" role="button">Editar</a></td>
                         <td class="p-3 text-indigo-50">
-                            <form action="{{ route('tasks.destroy', $estado->id) }}" method="post">
+                            <form action="{{ route('tasks.destroy', $estado->id) }}" method="get">
                                 {{ csrf_field() }}
-                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_method" >
                                 <button class="bg-red-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">BORRAR</button>
                             </form>
 

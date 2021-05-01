@@ -92,7 +92,6 @@ class TaskController extends Controller
     {
         $task_id = Task::find($id);
 
-
         return view ('/tasks.edit')->with('task_id', $task_id);
     }
 
