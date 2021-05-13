@@ -32,10 +32,10 @@ Route::patch('/tasks/{id}', [TaskController::class,'update'])->name('tasks.updat
 
 
 
-//Route::resources([
-//    'tasks' => TaskController::class,
-//    'states' => StatusController::class,
-//]);
+Route::resources([
+    'tasks' => TaskController::class,
+    'states' => StatusController::class,
+]);
 
 //Route::post('/task',[TaskController::class, 'store'])->middleware(['auth'])->name('task');;
 //Route::get('tasks/{id}/destroy',[TaskController::class,'destroy'])->name('tasks.destroy');

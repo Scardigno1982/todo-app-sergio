@@ -121,5 +121,6 @@ class TaskController extends Controller
 
         $task_id = Task::where('id',$id)->first();;
         $task_id->delete();
-        return back()->with('info', 'Fue eliminado exitosamente');    }
+        return back()->with('info', 'Fue eliminado exitosamente');
+    }
 }

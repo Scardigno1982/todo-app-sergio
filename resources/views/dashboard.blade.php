@@ -1,7 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Dashboard') }} El usuario {{ Auth::user()->name }} es rol @foreach(Auth::user()->getRoleNames() as $role)
+                {{$role}},
+            @endforeach
         </h2>
     </x-slot>
 
@@ -92,6 +94,12 @@
         </div>
 
     </div>
+
+    @role('admin')
+    I am a admin!
+    @else
+        I am not a admin...
+        @endrole
 
 
 </x-app-layout>
